@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
     [SerializeField]
     private Achievement[] m_achievements;
+
+    [SerializeField]
+    private TextMeshProUGUI m_achievementNumDisplay;
 
     private List<Achievement> m_completedAchievements;
 
@@ -14,6 +18,8 @@ public class AchievementManager : MonoBehaviour
     private NuggetClickHandler m_nuggetClickHandler;
     private BackgroundClickHandler m_backgroundClickHandler;
     private ClickDetector m_clickDetector;
+
+    private int m_numCompleted = 0;
 
     private void Start()
     {
@@ -42,7 +48,9 @@ public class AchievementManager : MonoBehaviour
         m_clickDetector.DisableClicks();
         achievement.AchievementCompleted -= OnAchievementCompleted;
         achievement.MarkAsCompleted();
+        m_numCompleted++;
         m_uiController.ShowAchievement(achievement.AchievementTitle, achievement.AchievementDescription);
+        m_achievementNumDisplay.text = m_numCompleted.ToString();
     }
 
     private void OnAchievementPopupCompleted()
