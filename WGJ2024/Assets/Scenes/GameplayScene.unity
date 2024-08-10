@@ -405,7 +405,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 263005848}
         m_TargetAssemblyTypeName: NuggetClickHandler, Assembly-CSharp
-        m_MethodName: ResetNugget
+        m_MethodName: Reset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
