@@ -150,6 +150,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 70e9fce0a88e81247ad606985d3c56fa, type: 3}
+--- !u!114 &119138579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119138571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05ae070e3c4d5344bd6b6a3a9d17365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &184444553
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +790,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862124685}
   m_CullTransparentMesh: 1
+--- !u!1 &954199419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954199420}
+  - component: {fileID: 954199421}
+  m_Layer: 0
+  m_Name: AchievementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &954199420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954199419}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1666323755}
+  - {fileID: 1253520103}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &954199421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954199419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8d0b8817c4aa648b3b2f92d96a841d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_achievements:
+  - {fileID: 1666323756}
+  - {fileID: 1253520104}
 --- !u!1001 &1027292316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -869,6 +930,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 119138575}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70e9fce0a88e81247ad606985d3c56fa,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 119138579}
   m_SourcePrefab: {fileID: 100100000, guid: 70e9fce0a88e81247ad606985d3c56fa, type: 3}
 --- !u!1 &1087192318
 GameObject:
@@ -988,6 +1053,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -312.8, z: 0}
+--- !u!1 &1253520102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253520103}
+  - component: {fileID: 1253520104}
+  m_Layer: 0
+  m_Name: HugeNuggetAchievement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1253520103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253520102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 954199420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253520104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253520102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d785c71b34e8549a4d6eb9f50c7701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_achievementTitle: Larger Than Loop
+  m_achievementDescription: The looped nugget is stuck
+  m_nuggetScaleRequirement: 1000
 --- !u!1 &1625031758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1234,54 @@ Transform:
   - {fileID: 1625031762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1666323754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1666323755}
+  - component: {fileID: 1666323756}
+  m_Layer: 0
+  m_Name: TinyNuggetAchievement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1666323755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666323754}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 954199420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666323756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666323754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717935822934b2f428de626d493e9463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_achievementTitle: Out of Sight, Out of Spin
+  m_achievementDescription: It vanished. I can't see it spinning. Does that mean
+    the loop is over?
+  m_nuggetScaleRequirement: 5
 --- !u!1 &1804666089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,6 +1614,7 @@ SceneRoots:
   - {fileID: 1087192321}
   - {fileID: 6542218099383140514}
   - {fileID: 1027292316}
+  - {fileID: 954199420}
   - {fileID: 740105686}
   - {fileID: 184444556}
   - {fileID: 1632518288}

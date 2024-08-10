@@ -28,7 +28,15 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Debug.Log("single click detected");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out m_hit, 100.0f))
+            {
+                GameObject clickedObject = m_hit.transform.gameObject;
+                if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                {
+                    clickHandler.HandleSingleLeftClick();
+                }
+            }
             m_clickSfxPlayer.PlayClickSfx();
         }
     }
@@ -55,7 +63,16 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Debug.Log("right click detected");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out m_hit, 100.0f))
+            {
+                GameObject clickedObject = m_hit.transform.gameObject;
+                if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                {
+                    clickHandler.HandleSingleRightClick();
+                }
+            }
+
             m_clickSfxPlayer.PlayClickSfx();
         }
     }
