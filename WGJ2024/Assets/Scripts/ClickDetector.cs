@@ -11,6 +11,9 @@ public class ClickDetector : MonoBehaviour
 
     private IClickHandler m_lastMiddleClickedHandler;
 
+    [SerializeField]
+    private ClickSfxPlayer m_clickSfxPlayer;
+
     public void DisableClicks()
     {
         m_enabled = false;
@@ -26,6 +29,7 @@ public class ClickDetector : MonoBehaviour
         if (m_enabled && context.performed)
         {
             Debug.Log("single click detected");
+            m_clickSfxPlayer.PlayClickSfx();
         }
     }
 
@@ -42,6 +46,8 @@ public class ClickDetector : MonoBehaviour
                     clickHandler.HandleMultiLeftClick();
                 }
             }
+
+            m_clickSfxPlayer.PlayClickSfx();
         }
     }
 
@@ -50,6 +56,7 @@ public class ClickDetector : MonoBehaviour
         if (m_enabled && context.performed)
         {
             Debug.Log("right click detected");
+            m_clickSfxPlayer.PlayClickSfx();
         }
     }
 
@@ -66,6 +73,7 @@ public class ClickDetector : MonoBehaviour
                     clickHandler.HandleMultiRightClick();
                 }
             }
+            m_clickSfxPlayer.PlayClickSfx();
         }
     }
 
@@ -75,6 +83,7 @@ public class ClickDetector : MonoBehaviour
         {
             Debug.Log("middle click detected");
         }
+        m_clickSfxPlayer.PlayClickSfx();
     }
 
     public void OnMiddleClickHold(InputAction.CallbackContext context)
@@ -93,6 +102,7 @@ public class ClickDetector : MonoBehaviour
                         clickHandler.HandleMiddleClickHold();
                     }
                 }
+                m_clickSfxPlayer.PlayClickSfx();
             }
             else if (context.canceled)
             {
