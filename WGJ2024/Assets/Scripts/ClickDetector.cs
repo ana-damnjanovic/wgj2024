@@ -9,11 +9,7 @@ public class ClickDetector : MonoBehaviour
 
     private bool m_enabled = true;
 
-    [SerializeField]
-    private LayerMask m_nuggetLayer;
-
-    [SerializeField]
-    private LayerMask m_backgroundLayer;
+    private IClickHandler m_lastMiddleClickedHandler;
 
     public void DisableClicks()
     {
@@ -25,7 +21,7 @@ public class ClickDetector : MonoBehaviour
         m_enabled = true;
     }
 
-    public void OnSingleClick(InputAction.CallbackContext context)
+    public void OnSingleLeftClick(InputAction.CallbackContext context)
     {
         if (m_enabled && context.performed)
         {
@@ -33,7 +29,7 @@ public class ClickDetector : MonoBehaviour
         }
     }
 
-    public void OnDoubleClick(InputAction.CallbackContext context)
+    public void OnMultiLeftClick(InputAction.CallbackContext context)
     {
         if (m_enabled && context.performed)
         {
@@ -41,20 +37,15 @@ public class ClickDetector : MonoBehaviour
             if (Physics.Raycast(ray, out m_hit, 100.0f))
             {
                 GameObject clickedObject = m_hit.transform.gameObject;
-                if (((1<<clickedObject.layer) & m_nuggetLayer) != 0)
+                if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
                 {
-                    // scale down nugget
-                    clickedObject.transform.localScale *= 0.95f;
-                }
-                else if (((1 << clickedObject.layer) & m_backgroundLayer) != 0)
-                {
-                    Debug.Log("double clicked on background");
+                    clickHandler.HandleMultiLeftClick();
                 }
             }
         }
     }
 
-    public void OnRightClick(InputAction.CallbackContext context)
+    public void OnSingleRightClick(InputAction.CallbackContext context)
     {
         if (m_enabled && context.performed)
         {
@@ -62,7 +53,7 @@ public class ClickDetector : MonoBehaviour
         }
     }
 
-    public void OnDoubleRightClick(InputAction.CallbackContext context)
+    public void OnMultiRightClick(InputAction.CallbackContext context)
     {
         if (m_enabled && context.performed)
         {
@@ -70,14 +61,45 @@ public class ClickDetector : MonoBehaviour
             if (Physics.Raycast(ray, out m_hit, 100.0f))
             {
                 GameObject clickedObject = m_hit.transform.gameObject;
-                if (((1 << clickedObject.layer) & m_nuggetLayer) != 0)
+                if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
                 {
-                    // scale up nugget
-                    clickedObject.transform.localScale *= 1.05f;
+                    clickHandler.HandleMultiRightClick();
                 }
-                else if (((1 << clickedObject.layer) & m_backgroundLayer) != 0)
+            }
+        }
+    }
+
+    public void OnMiddleClick(InputAction.CallbackContext context)
+    {
+        if (m_enabled && context.performed)
+        {
+            Debug.Log("middle click detected");
+        }
+    }
+
+    public void OnMiddleClickHold(InputAction.CallbackContext context)
+    {
+        if (m_enabled)
+        {
+            if (context.performed)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out m_hit, 100.0f))
                 {
-                    Debug.Log("double right clicked on background");
+                    GameObject clickedObject = m_hit.transform.gameObject;
+                    if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                    {
+                        m_lastMiddleClickedHandler = clickHandler;
+                        clickHandler.HandleMiddleClickHold();
+                    }
+                }
+            }
+            else if (context.canceled)
+            {
+                if (null != m_lastMiddleClickedHandler)
+                {
+                    m_lastMiddleClickedHandler.HandleMiddleClickHoldReleased();
+                    m_lastMiddleClickedHandler = null;
                 }
             }
         }

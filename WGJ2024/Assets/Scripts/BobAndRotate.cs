@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BobAndRotate : MonoBehaviour
 {
-
     [SerializeField]
     private float m_bobDistance = 1f;
 
@@ -21,7 +20,6 @@ public class BobAndRotate : MonoBehaviour
         m_initialHeight = transform.position.y;   
     }
 
-    // Update is called once per frame
     void Update()
     {
         float height = m_initialHeight +  Mathf.Sin( Time.time * m_bobSpeed ) * m_bobDistance;

@@ -6,7 +6,7 @@
             "id": "975da771-983e-495e-b6a9-85c980e01a92",
             "actions": [
                 {
-                    "name": "Single click",
+                    "name": "Left click",
                     "type": "Button",
                     "id": "df7293df-97bf-48fc-8eb1-8d9acda31da2",
                     "expectedControlType": "Button",
@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Double click",
+                    "name": "Multi left click",
                     "type": "Button",
                     "id": "646d2a2f-8a89-4f22-b9d6-73cbe552ea0e",
                     "expectedControlType": "Button",
@@ -33,12 +33,30 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Double right click",
+                    "name": "Multi right click",
                     "type": "Button",
                     "id": "bccda5f3-0f69-4ae3-af68-e9669f167e7f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "MultiTap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Middle Click",
+                    "type": "Button",
+                    "id": "a3a3365e-dac9-48e8-8049-0a6bb550b38e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Middle Click Hold",
+                    "type": "Button",
+                    "id": "a9c4cabb-927a-49b6-aff4-4ff9a20d1574",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 }
             ],
@@ -50,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Single click",
+                    "action": "Left click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -61,7 +79,7 @@
                     "interactions": "MultiTap",
                     "processors": "",
                     "groups": "",
-                    "action": "Double click",
+                    "action": "Multi left click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -83,7 +101,29 @@
                     "interactions": "MultiTap",
                     "processors": "",
                     "groups": "",
-                    "action": "Double right click",
+                    "action": "Multi right click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8625c06c-9dc7-44cd-b894-134d19c4805d",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Middle Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f6a7f5d-6c41-41fc-84f4-a4edf641429a",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Middle Click Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
