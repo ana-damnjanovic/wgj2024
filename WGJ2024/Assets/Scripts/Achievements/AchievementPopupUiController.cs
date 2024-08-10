@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class AchievementUiController : MonoBehaviour
+public class AchievementPopupUiController : MonoBehaviour
 {
     [SerializeField]
     private Canvas m_canvas;
@@ -15,7 +15,9 @@ public class AchievementUiController : MonoBehaviour
     private TextMeshProUGUI m_achievementDescription;
 
     [SerializeField]
-    private float m_displayTime = 3f;
+    private float m_displayTime = 5f;
+
+    public event System.Action AchievementPopupCompleted = delegate { };
 
     public void ShowAchievement(string achievementTitle, string achievementDescription)
     {
@@ -30,5 +32,6 @@ public class AchievementUiController : MonoBehaviour
     {
         yield return new WaitForSeconds(m_displayTime);
         m_canvas.enabled = false;
+        AchievementPopupCompleted.Invoke();
     }
 }
