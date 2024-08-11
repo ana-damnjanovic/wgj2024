@@ -14,6 +14,12 @@ public class ClickDetector : MonoBehaviour
     [SerializeField]
     private ClickSfxPlayer m_clickSfxPlayer;
 
+    [SerializeField]
+    private LayerMask m_uiLayer;
+
+    [SerializeField]
+    private Camera m_raycastCamera;
+
     public void DisableClicks()
     {
         m_enabled = false;
@@ -28,7 +34,15 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Debug.Log("single click detected");
+            Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out m_hit, 100.0f))
+            {
+                GameObject clickedObject = m_hit.transform.gameObject;
+                if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                {
+                    clickHandler.HandleSingleLeftClick();
+                }
+            }
             m_clickSfxPlayer.PlayClickSfx();
         }
     }
@@ -37,7 +51,7 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out m_hit, 100.0f))
             {
                 GameObject clickedObject = m_hit.transform.gameObject;
@@ -55,7 +69,16 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Debug.Log("right click detected");
+            Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out m_hit, 100.0f))
+            {
+                GameObject clickedObject = m_hit.transform.gameObject;
+                if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                {
+                    clickHandler.HandleSingleRightClick();
+                }
+            }
+
             m_clickSfxPlayer.PlayClickSfx();
         }
     }
@@ -64,7 +87,7 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out m_hit, 100.0f))
             {
                 GameObject clickedObject = m_hit.transform.gameObject;
@@ -92,7 +115,7 @@ public class ClickDetector : MonoBehaviour
         {
             if (context.performed)
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out m_hit, 100.0f))
                 {
                     GameObject clickedObject = m_hit.transform.gameObject;

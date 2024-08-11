@@ -15,4 +15,6 @@ public interface IClickHandler
 
     public void HandleMiddleClickHold();
     public void HandleMiddleClickHoldReleased();
+    public void Reset();
+
 }

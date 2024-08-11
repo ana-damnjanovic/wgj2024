@@ -6,9 +6,18 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
 {
     //TODO: detect when achievement is reached and stop handling that click type
 
+    [SerializeField]
+    private Camera m_raycastCamera;
+
     private Coroutine m_mouseDragCoroutine;
     private BobAndRotate m_bobbingAndRotation;
     private Vector3 m_originalPosition;
+
+    public event System.Action LeftClicked = delegate { };
+
+    public event System.Action RightClicked = delegate { };
+   
+    public event System.Action MiddleClicked = delegate { };
 
     private void Start()
     {
@@ -16,7 +25,7 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
         m_originalPosition = transform.position;
     }
 
-    public void ResetNugget()
+    public void Reset()
     {
         transform.localScale = Vector3.one * 100f;
         transform.position = m_originalPosition;
@@ -24,27 +33,27 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
 
     public void HandleSingleLeftClick()
     {
-
+        LeftClicked.Invoke();
     }
 
     public void HandleMultiLeftClick()
     {
-        transform.localScale *= 0.95f;
+        transform.localScale *= 1.05f;
     }
 
     public void HandleSingleRightClick()
     {
-
+        RightClicked.Invoke();
     }
 
     public void HandleMultiRightClick()
     {
-        transform.localScale *= 1.05f;
+        transform.localScale *= 0.9f;
     }
 
     public void HandleMiddleClick()
     {
-
+        MiddleClicked.Invoke();
     }
 
     public void HandleMiddleClickHold()
@@ -65,8 +74,8 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
     {
         while(true)
         {
-            float distanceToScreen = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Mathf.Max(Input.mousePosition.y, 0f), distanceToScreen));
+            float distanceToScreen = m_raycastCamera.WorldToScreenPoint(gameObject.transform.position).z;
+            transform.position = m_raycastCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Mathf.Max(Input.mousePosition.y, 0f), distanceToScreen));
             yield return null;
         }
 
