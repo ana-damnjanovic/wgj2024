@@ -21,7 +21,7 @@ public class AchievementManager : MonoBehaviour
 
     private int m_numCompleted = 0;
 
-    private void Start()
+    public void Initialize()
     {
         m_uiController = GameObject.FindObjectOfType<AchievementPopupUiController>();
         m_uiController.AchievementPopupCompleted += OnAchievementPopupCompleted;
