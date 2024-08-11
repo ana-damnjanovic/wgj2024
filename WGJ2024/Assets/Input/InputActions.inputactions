@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Left Click Hold",
+                    "type": "Button",
+                    "id": "f9cf2dc9-90f9-4e5a-a012-475c8f444dbf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=3)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Multi left click",
                     "type": "Button",
                     "id": "646d2a2f-8a89-4f22-b9d6-73cbe552ea0e",
@@ -124,6 +133,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Middle Click Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16b48d54-c505-4955-92f7-7a6bdc6ed423",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Click Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
