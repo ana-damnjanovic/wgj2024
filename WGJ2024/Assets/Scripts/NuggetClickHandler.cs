@@ -6,6 +6,9 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
 {
     //TODO: detect when achievement is reached and stop handling that click type
 
+    [SerializeField]
+    private Camera m_raycastCamera;
+
     private Coroutine m_mouseDragCoroutine;
     private BobAndRotate m_bobbingAndRotation;
     private Vector3 m_originalPosition;
@@ -71,8 +74,8 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
     {
         while(true)
         {
-            float distanceToScreen = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Mathf.Max(Input.mousePosition.y, 0f), distanceToScreen));
+            float distanceToScreen = m_raycastCamera.WorldToScreenPoint(gameObject.transform.position).z;
+            transform.position = m_raycastCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Mathf.Max(Input.mousePosition.y, 0f), distanceToScreen));
             yield return null;
         }
 
