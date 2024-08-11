@@ -7,7 +7,7 @@ public class ClickDetector : MonoBehaviour
 {
     private RaycastHit m_hit;
 
-    private bool m_enabled = true;
+    private bool m_enabled = false;
 
     private IClickHandler m_lastMiddleClickedHandler;
 

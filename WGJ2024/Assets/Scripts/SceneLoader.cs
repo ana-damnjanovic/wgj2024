@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private string[] m_requiredSceneNames;
 
-    private void Awake()
+    public void LoadRequiredScenes()
     {
         for (int iScene = 0; iScene < m_requiredSceneNames.Length; ++iScene)
         {
