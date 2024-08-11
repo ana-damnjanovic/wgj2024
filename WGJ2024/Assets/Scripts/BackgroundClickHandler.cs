@@ -59,4 +59,14 @@ public class BackgroundClickHandler : MonoBehaviour, IClickHandler
         m_meshRenderer.material = m_originalMaterial;
         m_originalMaterial = new Material(m_meshRenderer.material);
     }
+
+    public void HandleLeftClickHold()
+    {
+        
+    }
+
+    public void HandleLeftClickHoldReleased()
+    {
+        
+    }
 }

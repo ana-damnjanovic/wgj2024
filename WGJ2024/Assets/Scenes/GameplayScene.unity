@@ -417,9 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e558e3c353f784a98d9504f89f3abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_clicks:
+  m_regularClicks:
   - {fileID: 8300000, guid: fbbabcfbebd209e44833746753aa1970, type: 3}
   - {fileID: 8300000, guid: 81f47421663f11944a23e2ecbc51b502, type: 3}
+  m_leftClickNuggetHoldSfx: {fileID: 8300000, guid: 5a73a7c0650748945abee23c98ca6c19,
+    type: 3}
   m_audioSource: {fileID: 184444554}
 --- !u!4 &184444556
 Transform:
@@ -962,6 +964,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a9c4cabb-927a-49b6-aff4-4ff9a20d1574
     m_ActionName: Mouse Interactions/Middle Click Hold[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 740105684}
+        m_TargetAssemblyTypeName: ClickDetector, Assembly-CSharp
+        m_MethodName: OnLeftClickHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f9cf2dc9-90f9-4e5a-a012-475c8f444dbf
+    m_ActionName: Mouse Interactions/Left Click Hold[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Mouse Interactions
@@ -1171,6 +1189,7 @@ Transform:
   - {fileID: 1666323755}
   - {fileID: 1253520103}
   - {fileID: 2010934574}
+  - {fileID: 1229419960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &954199421
@@ -1189,6 +1208,7 @@ MonoBehaviour:
   - {fileID: 1666323756}
   - {fileID: 1253520104}
   - {fileID: 2010934575}
+  - {fileID: 1229419961}
   m_achievementNumDisplay: {fileID: 1774704250}
 --- !u!1 &968903294
 GameObject:
@@ -1441,6 +1461,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -312.8, z: 0}
+--- !u!1 &1229419959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229419960}
+  - component: {fileID: 1229419961}
+  m_Layer: 0
+  m_Name: NumberLoopAchievement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1229419960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229419959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 954199420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1229419961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229419959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08ce3dfd7a1273449a9a9756384e6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_achievementTitle: Number Loop
+  m_achievementDescription: 
 --- !u!1 &1253520102
 GameObject:
   m_ObjectHideFlags: 0

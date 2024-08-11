@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class NuggetClickHandler : MonoBehaviour, IClickHandler
 {
-    //TODO: detect when achievement is reached and stop handling that click type
-
+ 
     [SerializeField]
     private Camera m_raycastCamera;
 
@@ -15,6 +14,9 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
     private NuggetModelController m_modelController;
 
     public event System.Action LeftClicked = delegate { };
+
+    public event System.Action LeftClickHeld = delegate { };
+    public event System.Action LeftClickHoldReleased = delegate { };
 
     public event System.Action MultiLeftClicked = delegate { };
 
@@ -35,6 +37,7 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
     {
         transform.position = m_originalPosition;
         m_modelController.ResetModels();
+        m_modelController.ShowModel(NuggetModelController.NuggetModelType.DEFAULT);
     }
 
     public void HandleSingleLeftClick()
@@ -74,6 +77,16 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
         StopCoroutine(m_mouseDragCoroutine);
         m_mouseDragCoroutine = null;
         m_bobbingAndRotation.enabled = true;
+    }
+
+    public void HandleLeftClickHold()
+    {
+        LeftClickHeld.Invoke();
+    }
+
+    public void HandleLeftClickHoldReleased()
+    {
+        LeftClickHoldReleased.Invoke();
     }
 
     private IEnumerator MouseDrag()
