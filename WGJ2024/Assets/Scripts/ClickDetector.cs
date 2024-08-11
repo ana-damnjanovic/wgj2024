@@ -125,7 +125,6 @@ public class ClickDetector : MonoBehaviour
                         clickHandler.HandleMiddleClickHold();
                     }
                 }
-                m_clickSfxPlayer.PlayClickSfx();
             }
             else if (context.canceled)
             {
