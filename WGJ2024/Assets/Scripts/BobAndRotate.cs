@@ -24,6 +24,6 @@ public class BobAndRotate : MonoBehaviour
     {
         float height = m_initialHeight +  Mathf.Sin( Time.time * m_bobSpeed ) * m_bobDistance;
         transform.position = new Vector3(transform.position.x, height, transform.position.z);
-        transform.Rotate(Vector3.forward * m_rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * m_rotationSpeed * Time.deltaTime);
     }
 }
