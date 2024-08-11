@@ -12,23 +12,29 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
     private Coroutine m_mouseDragCoroutine;
     private BobAndRotate m_bobbingAndRotation;
     private Vector3 m_originalPosition;
+    private NuggetModelController m_modelController;
 
     public event System.Action LeftClicked = delegate { };
 
+    public event System.Action MultiLeftClicked = delegate { };
+
     public event System.Action RightClicked = delegate { };
+
+    public event System.Action MultiRightClicked = delegate { };
    
     public event System.Action MiddleClicked = delegate { };
 
     private void Start()
     {
         m_bobbingAndRotation = GetComponent<BobAndRotate>();
+        m_modelController = GetComponent<NuggetModelController>();
         m_originalPosition = transform.position;
     }
 
     public void Reset()
     {
-        transform.localScale = Vector3.one * 100f;
         transform.position = m_originalPosition;
+        m_modelController.ResetModels();
     }
 
     public void HandleSingleLeftClick()
@@ -38,7 +44,7 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
 
     public void HandleMultiLeftClick()
     {
-        transform.localScale *= 1.05f;
+        MultiLeftClicked.Invoke();
     }
 
     public void HandleSingleRightClick()
@@ -48,7 +54,7 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
 
     public void HandleMultiRightClick()
     {
-        transform.localScale *= 0.9f;
+        MultiRightClicked.Invoke();
     }
 
     public void HandleMiddleClick()

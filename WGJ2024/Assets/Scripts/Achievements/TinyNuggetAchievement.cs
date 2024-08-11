@@ -9,14 +9,15 @@ public class TinyNuggetAchievement : Achievement
 
     public override void StartTrackingAchievement()
     {
-        m_nuggetClickHandler.RightClicked += OnNuggetClicked;
+        m_nuggetClickHandler.MultiLeftClicked += OnNuggetClicked;
     }
 
     private void OnNuggetClicked()
     {
-        if (m_nuggetClickHandler.transform.localScale.x <= m_nuggetScaleRequirement)
+        m_nuggetModelController.ScaleModel(0.9f);
+        if (m_nuggetModelController.GetActiveModel().transform.localScale.x <= m_nuggetScaleRequirement)
         {
-            m_nuggetClickHandler.RightClicked -= OnNuggetClicked;
+            m_nuggetClickHandler.MultiLeftClicked -= OnNuggetClicked;
             InvokeCompletedEvent(this);
         }
     }
