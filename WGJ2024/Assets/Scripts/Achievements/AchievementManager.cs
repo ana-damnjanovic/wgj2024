@@ -11,6 +11,9 @@ public class AchievementManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI m_achievementNumDisplay;
 
+    [SerializeField]
+    private AudioClip m_bgm;
+
     private List<Achievement> m_completedAchievements = new();
 
     private AchievementPopupUiController m_uiController;
@@ -71,7 +74,7 @@ public class AchievementManager : MonoBehaviour
 
     private void OnAchievementPopupCompleted()
     {
-        m_bgmSource.Play();
+        m_bgmSource.PlayOneShot(m_bgm);
         Time.timeScale = 1f;
         m_clickDetector.EnableClicks();
         m_nuggetClickHandler.Reset();

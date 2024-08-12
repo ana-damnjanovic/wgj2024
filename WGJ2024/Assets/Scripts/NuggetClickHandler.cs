@@ -88,9 +88,12 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
 
     public void HandleMiddleClickHoldReleased()
     {
-        StopCoroutine(m_mouseDragCoroutine);
-        m_mouseDragCoroutine = null;
-        m_bobbingAndRotation.enabled = true;
+        if (null != m_mouseDragCoroutine)
+        {
+            StopCoroutine(m_mouseDragCoroutine);
+            m_mouseDragCoroutine = null;
+            m_bobbingAndRotation.enabled = true;
+        }
     }
 
     public void HandleLeftClickHold()

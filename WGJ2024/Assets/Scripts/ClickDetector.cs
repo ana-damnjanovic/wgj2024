@@ -133,9 +133,21 @@ public class ClickDetector : MonoBehaviour
     {
         if (m_enabled && context.performed)
         {
-            Debug.Log("middle click detected");
+            if (context.performed)
+            {
+                Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out m_hit, 100.0f))
+                {
+                    GameObject clickedObject = m_hit.transform.gameObject;
+                    if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                    {
+                        m_lastMiddleClickedHandler = clickHandler;
+                        clickHandler.HandleMiddleClick();
+                    }
+                }
+            }
+            m_clickSfxPlayer.PlayClickSfx();
         }
-        m_clickSfxPlayer.PlayClickSfx();
     }
 
     public void OnMiddleClickHold(InputAction.CallbackContext context)
