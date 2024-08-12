@@ -9,16 +9,16 @@ public class HugeNuggetAchievement : Achievement
 
     public override void StartTrackingAchievement()
     {
-        m_nuggetClickHandler.MultiRightClicked += OnNuggetClicked;
+        m_nuggetClickHandler.RightClicked += OnNuggetClicked;
     }
 
     private void OnNuggetClicked()
     {
-        m_nuggetModelController.ScaleModel(1.05f);
-        m_nuggetClickHandler.ScaleCollider(1.05f);
+        m_nuggetModelController.ScaleModel(1.2f);
+        m_nuggetClickHandler.ScaleCollider(1.1f);
         if (m_nuggetModelController.GetActiveModel().transform.localScale.x >= m_nuggetScaleRequirement)
         {
-            m_nuggetClickHandler.MultiRightClicked -= OnNuggetClicked;
+            m_nuggetClickHandler.RightClicked -= OnNuggetClicked;
             InvokeCompletedEvent(this);
         }
     }
