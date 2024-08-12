@@ -51,12 +51,22 @@ public class NumberLoopAchievement : Achievement
         m_nuggetModelController.ShowModel(NuggetModelController.NuggetModelType.NUMBER3);
         sfxPlayer.PlayLeftClickNuggetHoldSfx();
 
-        StartCoroutine(WaitAndCompleteAchievement());
+        m_nuggetClickHandler.LeftClickHeld += OnClickHeldFiveTimes;
     }
 
-    private IEnumerator WaitAndCompleteAchievement()
+    private void OnClickHeldFiveTimes()
     {
-        yield return new WaitForSeconds(2f);
-        InvokeCompletedEvent(this);
+        m_nuggetClickHandler.LeftClickHeld -= OnClickHeldFiveTimes;
+
+        m_nuggetModelController.ShowModel(NuggetModelController.NuggetModelType.DEFAULT);
+        sfxPlayer.PlayLeftClickNuggetHoldSfx();
+
+        StartCoroutine(WaitAndReset());
+    }
+
+    private IEnumerator WaitAndReset()
+    {
+        yield return new WaitForSeconds(3f);
+        StartTrackingAchievement();
     }
 }

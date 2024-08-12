@@ -50,10 +50,14 @@ public class AchievementManager : MonoBehaviour
     {
         m_clickDetector.DisableClicks();
         achievement.AchievementCompleted -= OnAchievementCompleted;
-        achievement.MarkAsCompleted();
-        m_numCompleted++;
-        m_uiController.ShowAchievement(achievement.AchievementTitle, achievement.AchievementDescription);
-        m_achievementNumDisplay.text = m_numCompleted.ToString();
+        if (!achievement.IsCompleted)
+        {
+            achievement.MarkAsCompleted();
+            m_numCompleted++;
+            m_uiController.ShowAchievement(achievement.AchievementTitle, achievement.AchievementDescription);
+            m_achievementNumDisplay.text = m_numCompleted.ToString();
+        }
+        achievement.StartTrackingAchievement();
     }
 
     private void OnAchievementPopupCompleted()
