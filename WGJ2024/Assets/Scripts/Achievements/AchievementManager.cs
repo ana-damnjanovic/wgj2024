@@ -11,7 +11,7 @@ public class AchievementManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI m_achievementNumDisplay;
 
-    private List<Achievement> m_completedAchievements;
+    private List<Achievement> m_completedAchievements = new();
 
     private AchievementPopupUiController m_uiController;
 
@@ -62,6 +62,7 @@ public class AchievementManager : MonoBehaviour
             Time.timeScale = 0f;
             achievement.MarkAsCompleted();
             m_numCompleted++;
+            m_completedAchievements.Add(achievement);
             m_uiController.ShowAchievement(achievement.AchievementTitle, achievement.AchievementDescription);
             m_achievementNumDisplay.text = m_numCompleted.ToString();
         }

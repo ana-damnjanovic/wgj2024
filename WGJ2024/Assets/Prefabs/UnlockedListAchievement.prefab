@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 6454085755333895059}
   - component: {fileID: 5319487601839739747}
   - component: {fileID: 3995175243535603566}
+  - component: {fileID: 3434413012750801741}
   m_Layer: 5
   m_Name: UnlockedListAchievement
   m_TagString: Untagged
@@ -152,6 +153,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3434413012750801741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3792823463348555194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0e5e4f210923349a96861a7bd3d380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: {fileID: 4590858310663205262}
+  m_description: {fileID: 136306718099572802}
 --- !u!1 &4327603531946060459
 GameObject:
   m_ObjectHideFlags: 0
