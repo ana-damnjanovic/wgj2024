@@ -35,7 +35,8 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
         m_modelController = GetComponent<NuggetModelController>();
         m_originalPosition = transform.position;
         m_collider = GetComponent<CapsuleCollider>();
-        
+        m_originalColliderRadius = m_collider.radius;
+        m_originalColliderHeight = m_collider.height;
     }
 
     public void ScaleCollider(float scaleMultiplier)
