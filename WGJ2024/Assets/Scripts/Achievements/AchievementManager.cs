@@ -16,23 +16,20 @@ public class AchievementManager : MonoBehaviour
     private AchievementPopupUiController m_uiController;
 
     private NuggetClickHandler m_nuggetClickHandler;
-    private NuggetModelController m_nuggetModelController;
     private BackgroundClickHandler m_backgroundClickHandler;
     private ClickDetector m_clickDetector;
 
     private int m_numCompleted = 0;
 
-    public void Initialize()
+    private void Start()
     {
         m_uiController = GameObject.FindObjectOfType<AchievementPopupUiController>();
         m_uiController.AchievementPopupCompleted += OnAchievementPopupCompleted;
 
         m_nuggetClickHandler = GameObject.FindObjectOfType<NuggetClickHandler>();
-        m_nuggetModelController = GameObject.FindObjectOfType<NuggetModelController>();
         m_backgroundClickHandler = GameObject.FindObjectOfType<BackgroundClickHandler>();
         m_clickDetector = GameObject.FindObjectOfType<ClickDetector>();
         Achievement.SetNuggetClickHandler(m_nuggetClickHandler);
-        Achievement.SetNuggetModelController(m_nuggetModelController);
         Achievement.SetBackgroundClickHandler(m_backgroundClickHandler);
 
         int numAchievements = m_achievements.Length;

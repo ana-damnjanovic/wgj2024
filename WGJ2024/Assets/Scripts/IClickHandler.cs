@@ -8,9 +8,6 @@ public interface IClickHandler
 
     public void HandleMultiLeftClick();
 
-    public void HandleLeftClickHold();
-    public void HandleLeftClickHoldReleased();
-
     public void HandleSingleRightClick();
 
     public void HandleMultiRightClick();

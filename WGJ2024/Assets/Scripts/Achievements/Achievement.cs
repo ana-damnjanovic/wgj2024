@@ -13,7 +13,6 @@ public abstract class Achievement : MonoBehaviour
     private bool m_completed = false;
 
     protected static NuggetClickHandler m_nuggetClickHandler;
-    protected static NuggetModelController m_nuggetModelController;
     protected static BackgroundClickHandler m_backgroundClickHandler;
 
     public abstract void StartTrackingAchievement();
@@ -30,11 +29,6 @@ public abstract class Achievement : MonoBehaviour
     public static void SetNuggetClickHandler(NuggetClickHandler nuggetClickHandler)
     {
         m_nuggetClickHandler = nuggetClickHandler;
-    }
-
-    public static void SetNuggetModelController(NuggetModelController nuggetModelController)
-    {
-        m_nuggetModelController = nuggetModelController;
     }
 
     public static void SetBackgroundClickHandler(BackgroundClickHandler backgroundClickHandler)
