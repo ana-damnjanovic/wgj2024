@@ -48,16 +48,6 @@ public class NumberLoopAchievement : Achievement
     {
         m_nuggetClickHandler.LeftClickHeld -= OnClickHeldFourTimes;
 
-        m_nuggetModelController.ShowModel(NuggetModelController.NuggetModelType.NUMBER3);
-        sfxPlayer.PlayLeftClickNuggetHoldSfx();
-
-        m_nuggetClickHandler.LeftClickHeld += OnClickHeldFiveTimes;
-    }
-
-    private void OnClickHeldFiveTimes()
-    {
-        m_nuggetClickHandler.LeftClickHeld -= OnClickHeldFiveTimes;
-
         m_nuggetModelController.ShowModel(NuggetModelController.NuggetModelType.DEFAULT);
         sfxPlayer.PlayLeftClickNuggetHoldSfx();
 
