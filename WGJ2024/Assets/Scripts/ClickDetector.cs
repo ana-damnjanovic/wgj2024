@@ -7,9 +7,10 @@ public class ClickDetector : MonoBehaviour
 {
     private RaycastHit m_hit;
 
-    private bool m_enabled = true;
+    private bool m_enabled = false;
 
     private IClickHandler m_lastMiddleClickedHandler;
+    private IClickHandler m_lastLeftClickHoldHandler;
 
     [SerializeField]
     private ClickSfxPlayer m_clickSfxPlayer;
@@ -62,6 +63,34 @@ public class ClickDetector : MonoBehaviour
             }
 
             m_clickSfxPlayer.PlayClickSfx();
+        }
+    }
+
+    public void OnLeftClickHold(InputAction.CallbackContext context)
+    {
+        if (m_enabled) 
+        {
+            if (context.performed)
+            {
+                Ray ray = m_raycastCamera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out m_hit, 100.0f))
+                {
+                    GameObject clickedObject = m_hit.transform.gameObject;
+                    if (clickedObject.TryGetComponent<IClickHandler>(out IClickHandler clickHandler))
+                    {
+                        m_lastLeftClickHoldHandler = clickHandler;
+                        clickHandler.HandleLeftClickHold();
+                    }
+                }
+            }
+            else if (context.canceled)
+            {
+                if (null != m_lastLeftClickHoldHandler)
+                {
+                    m_lastLeftClickHoldHandler.HandleLeftClickHoldReleased();
+                    m_lastLeftClickHoldHandler = null;
+                }
+            }
         }
     }
 
@@ -125,7 +154,6 @@ public class ClickDetector : MonoBehaviour
                         clickHandler.HandleMiddleClickHold();
                     }
                 }
-                m_clickSfxPlayer.PlayClickSfx();
             }
             else if (context.canceled)
             {
