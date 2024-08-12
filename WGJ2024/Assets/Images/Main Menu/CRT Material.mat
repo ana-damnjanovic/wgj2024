@@ -69,6 +69,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Nugget_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -83,6 +87,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_4bc521246eae44388105b7d1600e9370_Out_0_Texture2D:
         m_Texture: {fileID: 2800000, guid: 71aeaac4c4088784a91d6a818455e895, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_9e618ecb98144207a96a3b7bf95dc335_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: a2eceed58ef5dcb42a500c6d05b28dd5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
