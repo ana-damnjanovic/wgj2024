@@ -16,22 +16,19 @@ public class MainMenuUiController : MonoBehaviour
 
     private void Awake()
     {
-        //m_startGameButton.onClick.AddListener(OnStartButtonPressed);
-
-        // temp timer until we implement the menu functionality
-        StartCoroutine(WaitForTimerAndStartGame());
+        m_startGameButton.onClick.AddListener(OnStartButtonPressed);
     }
 
     private void OnStartButtonPressed()
     {
-        //m_startGameButton.onClick.RemoveListener(OnStartButtonPressed);
+        m_startGameButton.onClick.RemoveListener(OnStartButtonPressed);
         m_canvas.enabled = false;
         StartGameRequested.Invoke();
     }
 
-    private IEnumerator WaitForTimerAndStartGame()
-    {
-        yield return new WaitForSeconds(3f);
-        OnStartButtonPressed();
-    }
+    //private IEnumerator WaitForTimerAndStartGame()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    OnStartButtonPressed();
+    //}
 }
