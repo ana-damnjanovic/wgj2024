@@ -15,6 +15,7 @@ public class HugeNuggetAchievement : Achievement
     private void OnNuggetClicked()
     {
         m_nuggetModelController.ScaleModel(1.05f);
+        m_nuggetClickHandler.ScaleCollider(1.05f);
         if (m_nuggetModelController.GetActiveModel().transform.localScale.x >= m_nuggetScaleRequirement)
         {
             m_nuggetClickHandler.MultiRightClicked -= OnNuggetClicked;

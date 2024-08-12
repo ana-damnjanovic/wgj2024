@@ -12,6 +12,9 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
     private BobAndRotate m_bobbingAndRotation;
     private Vector3 m_originalPosition;
     private NuggetModelController m_modelController;
+    private CapsuleCollider m_collider;
+    private float m_originalColliderRadius;
+    private float m_originalColliderHeight;
 
     public event System.Action LeftClicked = delegate { };
 
@@ -31,11 +34,21 @@ public class NuggetClickHandler : MonoBehaviour, IClickHandler
         m_bobbingAndRotation = GetComponent<BobAndRotate>();
         m_modelController = GetComponent<NuggetModelController>();
         m_originalPosition = transform.position;
+        m_collider = GetComponent<CapsuleCollider>();
+        
+    }
+
+    public void ScaleCollider(float scaleMultiplier)
+    {
+        m_collider.radius *= scaleMultiplier;
+        m_collider.height *= scaleMultiplier;
     }
 
     public void Reset()
     {
         transform.position = m_originalPosition;
+        m_collider.radius = m_originalColliderRadius;
+        m_collider.height = m_originalColliderHeight;
         m_modelController.ResetModels();
         m_modelController.ShowModel(NuggetModelController.NuggetModelType.DEFAULT);
     }
