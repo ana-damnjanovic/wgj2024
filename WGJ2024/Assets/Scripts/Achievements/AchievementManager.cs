@@ -23,6 +23,10 @@ public class AchievementManager : MonoBehaviour
 
     private int m_numCompleted = 0;
 
+    public List<Achievement> GetCompletedAchievements => m_completedAchievements;
+
+    public int NumTotalAchievements => m_achievements.Length - 1;
+
     public void Initialize()
     {
         m_uiController = GameObject.FindObjectOfType<AchievementPopupUiController>();

@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class AchievementListUiController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private AchievementManager m_achievementManager;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private GameObject m_unlockedAchievementPrefab;
+
+    [SerializeField]
+    private GameObject m_lockedAchievementPrefab;
+
+    private List<GameObject> m_instantiatedPrefabs;
+
+    private void OnEnable()
     {
         
     }
