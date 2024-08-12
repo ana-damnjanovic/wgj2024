@@ -19,6 +19,7 @@ public class AchievementManager : MonoBehaviour
     private NuggetModelController m_nuggetModelController;
     private BackgroundClickHandler m_backgroundClickHandler;
     private ClickDetector m_clickDetector;
+    private AudioSource m_bgmSource;
 
     private int m_numCompleted = 0;
 
@@ -31,6 +32,7 @@ public class AchievementManager : MonoBehaviour
         m_nuggetModelController = GameObject.FindObjectOfType<NuggetModelController>();
         m_backgroundClickHandler = GameObject.FindObjectOfType<BackgroundClickHandler>();
         m_clickDetector = GameObject.FindObjectOfType<ClickDetector>();
+        m_bgmSource = GameObject.Find("BGM").GetComponent<AudioSource>();
         Achievement.SetNuggetClickHandler(m_nuggetClickHandler);
         Achievement.SetNuggetModelController(m_nuggetModelController);
         Achievement.SetBackgroundClickHandler(m_backgroundClickHandler);
@@ -52,6 +54,8 @@ public class AchievementManager : MonoBehaviour
         achievement.AchievementCompleted -= OnAchievementCompleted;
         if (!achievement.IsCompleted)
         {
+            m_bgmSource.Stop();
+            Time.timeScale = 0f;
             achievement.MarkAsCompleted();
             m_numCompleted++;
             m_uiController.ShowAchievement(achievement.AchievementTitle, achievement.AchievementDescription);
@@ -62,6 +66,8 @@ public class AchievementManager : MonoBehaviour
 
     private void OnAchievementPopupCompleted()
     {
+        m_bgmSource.Play();
+        Time.timeScale = 1f;
         m_clickDetector.EnableClicks();
         m_nuggetClickHandler.Reset();
         m_backgroundClickHandler.Reset();

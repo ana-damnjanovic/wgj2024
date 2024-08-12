@@ -30,7 +30,7 @@ public class AchievementPopupUiController : MonoBehaviour
 
     private IEnumerator WaitForTimerAndHide()
     {
-        yield return new WaitForSeconds(m_displayTime);
+        yield return new WaitForSecondsRealtime(m_displayTime);
         m_canvas.enabled = false;
         AchievementPopupCompleted.Invoke();
     }
