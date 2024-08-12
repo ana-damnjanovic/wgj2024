@@ -1711,7 +1711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvas: {fileID: 1727155463}
-  m_startGameButton: {fileID: 0}
+  m_startGameButton: {fileID: 305820353}
 --- !u!1 &2045798616
 GameObject:
   m_ObjectHideFlags: 0
