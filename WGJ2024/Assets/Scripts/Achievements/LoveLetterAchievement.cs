@@ -62,7 +62,9 @@ public class LoveLetterAchievement : Achievement
             Destroy(m_heartParticleSystem);
             m_nuggetClickHandler.MiddleClicked -= OnNuggetClicked;
             m_nuggetModelController.ShowModel(NuggetModelController.NuggetModelType.HEART);
-            m_bgmSource.PlayOneShot(m_romanceAudioClip);
+            m_bgmSource.Stop();
+            m_bgmSource.clip = m_romanceAudioClip;
+            m_bgmSource.Play();
             m_resetButton.gameObject.SetActive(false);
             m_loveLetterButton.onClick.AddListener(OnLoveLetterButtonPressed);
             m_loveLetterButton.gameObject.SetActive(true);
@@ -80,7 +82,9 @@ public class LoveLetterAchievement : Achievement
     private void OnLoveLetterFailed()
     {
         m_loveLetterUiController.LoveLetterFailed -= OnLoveLetterFailed;
-        m_bgmSource.PlayOneShot(m_originalBgm);
+        m_bgmSource.Stop();
+        m_bgmSource.clip = m_originalBgm;
+        m_bgmSource.Play();
         m_loveLetterButton.gameObject.SetActive(false);
         m_resetButton.gameObject.SetActive(true);
         m_nuggetClickHandler.Reset();

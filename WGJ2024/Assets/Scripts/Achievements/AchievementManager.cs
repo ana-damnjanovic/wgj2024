@@ -74,7 +74,8 @@ public class AchievementManager : MonoBehaviour
 
     private void OnAchievementPopupCompleted()
     {
-        m_bgmSource.PlayOneShot(m_bgm);
+        m_bgmSource.clip = m_bgm;
+        m_bgmSource.Play();
         Time.timeScale = 1f;
         m_clickDetector.EnableClicks();
         m_nuggetClickHandler.Reset();
